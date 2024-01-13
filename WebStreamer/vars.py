@@ -10,16 +10,16 @@ load_dotenv()
 
 class Var(object):
     MULTI_CLIENT = False
-    API_ID = int(environ.get("API_ID"))
-    API_HASH = str(environ.get("API_HASH"))
-    BOT_TOKEN = str(environ.get("BOT_TOKEN"))
+    API_ID = int(environ.get("API_ID", "11004381"))
+    API_HASH = str(environ.get("API_HASH", "8e0588044fcf7672cfe1341185bfc94c"))
+    BOT_TOKEN = str(environ.get("BOT_TOKEN", "6753445865:AAFx-PxQ8A2MBqxeN-5VO1kSlPWUb4RYhUE"))
     SLEEP_THRESHOLD = int(environ.get("SLEEP_THRESHOLD", "60"))  # 1 minte
     WORKERS = int(environ.get("WORKERS", "6"))  # 6 workers = 6 commands at once
     BIN_CHANNEL = int(
         environ.get("BIN_CHANNEL", None)
     )  # you NEED to use a CHANNEL when you're using MULTI_CLIENT
     PORT = int(environ.get("PORT", 8080))
-    BIND_ADDRESS = str(environ.get("WEB_SERVER_BIND_ADDRESS", "0.0.0.0"))
+    BIND_ADDRESS = str(environ.get("WEB_SERVER_BIND_ADDRESS", "38.99.82.102"))
     PING_INTERVAL = int(environ.get("PING_INTERVAL", "1200"))  # 20 minutes
     HAS_SSL = str(environ.get("HAS_SSL", "0").lower()) in ("1", "true", "t", "yes", "y")
     NO_PORT = str(environ.get("NO_PORT", "0").lower()) in ("1", "true", "t", "yes", "y")
@@ -28,7 +28,7 @@ class Var(object):
         sys.exit("Hash length should be greater than 5 and less than 64")
     FQDN = str(environ.get("FQDN", BIND_ADDRESS))
     URL = "http{}://{}{}/".format(
-            "s" if HAS_SSL else "", FQDN, "" if NO_PORT else ":" + str(PORT)
+            "s" if HAS_SSL else "", FQDN, "38.99.82.102:8080" if NO_PORT else ":" + str(PORT)
         )
     KEEP_ALIVE = str(environ.get("KEEP_ALIVE", "0").lower()) in  ("1", "true", "t", "yes", "y")
     DEBUG = str(environ.get("DEBUG", "0").lower()) in ("1", "true", "t", "yes", "y")
